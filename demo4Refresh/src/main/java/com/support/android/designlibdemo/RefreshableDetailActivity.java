@@ -68,11 +68,11 @@ public class RefreshableDetailActivity extends AppCompatActivity {
     });
     rv.addOnScrollListener(new RecyclerView.OnScrollListener() {
       @Override
-      public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+      public void onScrolled(final RecyclerView recyclerView, int dx, int dy) {
         super.onScrolled(recyclerView, dx, dy);
         final View loadingMore = findViewById(R.id.loadingMore);
         if (!recyclerView.canScrollVertically(1)
-                && loadingMore.getVisibility() == View.GONE) {
+                && loadingMore.getVisibility() == View.INVISIBLE) {
           loadingMore.setVisibility(View.VISIBLE);
           new Thread(new Runnable() {
             @Override
@@ -89,8 +89,10 @@ public class RefreshableDetailActivity extends AppCompatActivity {
               loadingMore.post(new Runnable() {
                 @Override
                 public void run() {
-                  loadingMore.setVisibility(View.GONE);
+                  loadingMore.setVisibility(View.INVISIBLE);
                   adapter.notifyItemRangeInserted(beforeUpdateCount, 10);
+                  // 为了显示列表新加载出来的数据做的hack
+                  recyclerView.scrollBy(0, 1);
                 }
               });
             }
