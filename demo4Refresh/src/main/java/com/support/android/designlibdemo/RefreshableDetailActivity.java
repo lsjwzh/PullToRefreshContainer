@@ -71,11 +71,9 @@ public class RefreshableDetailActivity extends AppCompatActivity {
       public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
         super.onScrolled(recyclerView, dx, dy);
         final View loadingMore = findViewById(R.id.loadingMore);
-        int offset = recyclerView.computeVerticalScrollRange() -
-            recyclerView.computeVerticalScrollExtent() -
-            recyclerView.computeVerticalScrollOffset();
-        loadingMore.setScrollY(-offset);
-        if (!recyclerView.canScrollVertically(1)) {
+        if (!recyclerView.canScrollVertically(1)
+                && loadingMore.getVisibility() == View.GONE) {
+          loadingMore.setVisibility(View.VISIBLE);
           new Thread(new Runnable() {
             @Override
             public void run() {
@@ -91,6 +89,7 @@ public class RefreshableDetailActivity extends AppCompatActivity {
               loadingMore.post(new Runnable() {
                 @Override
                 public void run() {
+                  loadingMore.setVisibility(View.GONE);
                   adapter.notifyItemRangeInserted(beforeUpdateCount, 10);
                 }
               });
@@ -114,10 +113,9 @@ public class RefreshableDetailActivity extends AppCompatActivity {
 
   private void setupRecyclerView(RecyclerView recyclerView) {
     LinearLayoutManager layout = new LinearLayoutManager(recyclerView.getContext());
-    layout.setAutoMeasureEnabled(false);
     recyclerView.setLayoutManager(layout);
     adapter = new SimpleStringRecyclerViewAdapter(this,
-        DemoUtils.getRandomSublist(Cheeses.sCheeseStrings, 1)) {
+        DemoUtils.getRandomSublist(Cheeses.sCheeseStrings, 100)) {
       @Override
       public void onBindViewHolder(ViewHolder holder, int position) {
         super.onBindViewHolder(holder, position);

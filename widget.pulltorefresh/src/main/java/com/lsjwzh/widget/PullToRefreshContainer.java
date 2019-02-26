@@ -200,6 +200,7 @@ public class PullToRefreshContainer extends PowerfulScrollView {
   protected void rebuildScrollBlocks() {
     super.rebuildScrollBlocks();
     mScrollBlocks.add(0, new ScrollBlock());
+    mScrollBlocks.add(new ScrollBlock());
   }
 
 
