@@ -85,7 +85,7 @@ public class PullToRefreshContainer extends PowerfulScrollView {
                                            isTouchEvent) {
     Log.d(TAG, String.format("overScrollByCompat getScrollY() %s deltaY: %s", getScrollY(),
         deltaY));
-    if (getScrollY() == 0 || (isTouchEvent && mMoveBeforeTouchRelease)) {
+    if (getScrollY() == 0 || (isTouchEvent && !isDisallowIntercept() && mMoveBeforeTouchRelease)) {
       deltaY = tryConsume(deltaY, ViewCompat.TYPE_NON_TOUCH);
       if (deltaY != 0 && mMoveBeforeTouchRelease) {
         float translationY = getRefreshTargetView().getTranslationY();
