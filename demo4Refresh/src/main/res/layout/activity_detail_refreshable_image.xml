@@ -22,79 +22,74 @@
     android:fitsSystemWindows="true"
     android:overScrollMode="never">
 
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+    <com.support.android.designlibdemo.AppRefreshLoadingView
+      android:id="@id/ptr_refreshLoadingView"
+      android:layout_width="match_parent"
+      android:layout_height="100dp"
+      android:background="#000000"></com.support.android.designlibdemo.AppRefreshLoadingView>
 
-        <com.support.android.designlibdemo.AppRefreshLoadingView
-            android:id="@id/ptr_refreshLoadingView"
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:background="#000000"></com.support.android.designlibdemo.AppRefreshLoadingView>
+    <RelativeLayout
+      android:id="@id/ptr_refreshTargetView"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:clipChildren="false"
+      app:actionType="core"
+      android:orientation="vertical">
 
         <RelativeLayout
-            android:id="@id/ptr_refreshTargetView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:clipChildren="false"
-            android:orientation="vertical">
+          android:id="@+id/imageWrapper"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content">
 
-            <RelativeLayout
-                android:id="@+id/imageWrapper"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+            <ImageView
+              android:id="@+id/image"
+              android:layout_width="match_parent"
+              android:layout_height="100dp"
+              android:fitsSystemWindows="true"
+              android:scaleType="centerCrop"
+              android:src="@drawable/ic_dashboard" />
 
-                <ImageView
-                    android:id="@+id/image"
-                    android:layout_width="match_parent"
-                    android:layout_height="100dp"
-                    android:fitsSystemWindows="true"
-                    android:scaleType="centerCrop"
-                    android:src="@drawable/ic_dashboard" />
-
-                <ImageView
-                    android:id="@+id/backdrop"
-                    android:layout_width="match_parent"
-                    android:layout_height="200dp"
-                    android:fitsSystemWindows="true"
-                    android:scaleType="centerCrop" />
-
-            </RelativeLayout>
-
-            <LinearLayout
-                android:id="@+id/stickyLayout"
-                android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:visibility="gone">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/app_name"
-                    android:textSize="20sp" />
-            </LinearLayout>
-
-            <com.lsjwzh.widget.powerfulscrollview.AutoMeasureRecyclerView
-                android:id="@+id/recyclerview"
-                android:layout_below="@+id/imageWrapper"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/cardview_dark_background"
-                android:clipToPadding="false"
-                android:clipChildren="false"/>
-
-            <TextView
-                android:id="@+id/loadingMore"
-                android:layout_below="@+id/recyclerview"
-                android:visibility="invisible"
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:text="loading more"
-                android:textSize="20sp" />
+            <ImageView
+              android:id="@+id/backdrop"
+              android:layout_width="match_parent"
+              android:layout_height="200dp"
+              android:fitsSystemWindows="true"
+              android:scaleType="centerCrop" />
 
         </RelativeLayout>
 
-    </FrameLayout>
+        <LinearLayout
+          android:id="@+id/stickyLayout"
+          android:layout_width="match_parent"
+          android:layout_height="100dp"
+          android:visibility="gone">
+
+            <TextView
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:text="@string/app_name"
+              android:textSize="20sp" />
+        </LinearLayout>
+
+        <com.lsjwzh.widget.powerfulscrollview.AutoMeasureRecyclerView
+          android:id="@+id/recyclerview"
+          android:layout_below="@+id/imageWrapper"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:background="@color/cardview_dark_background"
+          android:clipToPadding="false"
+          android:clipChildren="false"/>
+
+        <TextView
+          android:id="@+id/loadingMore"
+          android:layout_below="@+id/recyclerview"
+          android:visibility="invisible"
+          android:layout_width="match_parent"
+          android:layout_height="40dp"
+          android:text="loading more"
+          android:textSize="20sp" />
+
+    </RelativeLayout>
 
     <LinearLayout
         android:id="@+id/stickyLayout2"

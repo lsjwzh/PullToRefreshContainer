@@ -120,10 +120,14 @@ public class SimpleRefreshLoadingView extends FrameLayout
     return Integer.MAX_VALUE;
   }
 
-
   @Override
   public int getRefreshTriggerHeight() {
     return getHeight();
+  }
+
+  @Override
+  public float getPullProgress() {
+    return mProgress.getProgress() * 1f / mProgress.getMax();
   }
 
   public int getRefreshHeight() {

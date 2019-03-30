@@ -91,9 +91,6 @@ public class PullToRefreshContainer extends PowerfulScrollView {
         float translationY = getRefreshTargetView().getTranslationY();
         float mayTranslationY = translationY - deltaY;
         if (mayTranslationY < 0) {
-//          for (NestRecyclerViewHelper helper : mNestRecyclerViewHelpers) {
-//            helper.tryConsumeScroll(deltaY);
-//          }
           return true;
         }
       }
@@ -116,7 +113,7 @@ public class PullToRefreshContainer extends PowerfulScrollView {
           getRefreshTargetView(), null)) {
         notifyOnRefreshing();
       }
-    } else if (getRefreshTargetView().getTranslationY() > 0
+    } else if (getRefreshLoadingView().getPullProgress() > 0
         && !mIsRefreshing) {
       getRefreshLoadingView().collapse(getRefreshTargetView(), null);
     }
@@ -253,6 +250,9 @@ public class PullToRefreshContainer extends PowerfulScrollView {
     if (isRefreshing()) {
       return dyUnconsumed;
     }
+    if (getScrollY() != 0) {
+      return dampConsume(dyUnconsumed, type);
+    }
     int dampConsumed = dampConsume(dyUnconsumed, type);
     dyUnconsumed = dyUnconsumed - dampConsumed;
     // dyUnconsumed和translationY的方向是相反的
@@ -313,6 +313,13 @@ public class PullToRefreshContainer extends PowerfulScrollView {
     boolean moveToStableState(View refreshTargetView, Runnable animationEndCallback);
 
     int getRefreshTriggerHeight();
+
+    /**
+     * pull progress. [0, 1]
+     *
+     * @return pull offset/getRefreshTriggerHeight
+     */
+    float getPullProgress();
 
     void cancelAnimation();
 

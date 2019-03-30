@@ -139,6 +139,11 @@ public class AppRefreshLoadingView extends FrameLayout
     return getHeight();
   }
 
+  @Override
+  public float getPullProgress() {
+    return mProgress.getProgress() * 1f / mProgress.getMax();
+  }
+
   public int getRefreshHeight() {
     return getHeight();
   }

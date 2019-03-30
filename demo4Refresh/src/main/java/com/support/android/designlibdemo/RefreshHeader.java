@@ -123,6 +123,11 @@ public class RefreshHeader extends FrameLayout implements PullToRefreshContainer
     return DemoUtils.dip2px(getContext(), 100);
   }
 
+  @Override
+  public float getPullProgress() {
+    return mProgress.getProgress() * 1f / mProgress.getMax();
+  }
+
   public int getRefreshHeight(){
     return DemoUtils.dip2px(getContext(), 100);
   }
