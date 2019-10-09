@@ -1,9 +1,11 @@
 package com.lsjwzh.widget;
 
 import android.content.Context;
+
 import androidx.core.view.ViewCompat;
 import androidx.core.widget.ScrollerCompatExtend;
-import androidx.appcompat.widget.RecyclerView;
+import androidx.recyclerview.widget.RecyclerView;
+
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.MotionEvent;

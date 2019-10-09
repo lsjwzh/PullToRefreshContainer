@@ -19,8 +19,9 @@ package com.support.android.designlibdemo;
 import android.os.Bundle;
 import androidx.core.widget.NestedScrollViewExtend;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.LinearLayoutManager;
-import androidx.appcompat.widget.RecyclerView;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import android.view.Menu;
 import android.view.View;
 import android.widget.ImageView;

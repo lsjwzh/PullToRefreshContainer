@@ -2,7 +2,8 @@ package com.support.android.designlibdemo;
 
 import android.content.Context;
 import android.content.Intent;
-import androidx.appcompat.widget.RecyclerView;
+import androidx.recyclerview.widget.RecyclerView;
+
 import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;

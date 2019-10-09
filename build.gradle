@@ -1,7 +1,7 @@
 //apply from: 'PowerfulScrollView/build.gradle'
 
 buildscript{
-    apply from:'https://raw.githubusercontent.com/lsjwzh/widget.gradle/master/build.gradle'
+    apply from:'https://raw.githubusercontent.com/lsjwzh/widget.gradle/master/build-androidx.gradle'
 }
 
 allprojects {
