@@ -4,7 +4,7 @@ apply from:'https://raw.githubusercontent.com/lsjwzh/widget.gradle/master/lib-an
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
 
-    implementation 'com.github.lsjwzh:PowerfulScrollView-Core:1.2.0.59-androidx3'
+    implementation 'com.github.lsjwzh:PowerfulScrollView-Core:1.2.0.59-androidx4'
 //    implementation project(':powerfulscrollview')
 }
     

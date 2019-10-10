@@ -1,3 +1,3 @@
 include ':demo4Refresh', ':widget.pulltorefresh'
 include 'powerfulscrollview'
-project(':powerfulscrollview').projectDir =  file(rootDir.parent + '/widget.powerfulscrollview')
+project(':powerfulscrollview').projectDir =  file(rootDir.parent + '/PowerfulScrollView-Core/widget.powerfulscrollview')
