@@ -1,7 +1,12 @@
-apply from:'https://raw.githubusercontent.com/lsjwzh/widget.gradle/master/app.gradle'
+apply from:'https://raw.githubusercontent.com/lsjwzh/widget.gradle/master/app-androidx.gradle'
 
 
 dependencies {
-    compile 'me.zhanghai.android.materialprogressbar:library:1.4.2'
-    compile project(":widget.pulltorefresh")
+    configurations {
+        all*.exclude group: 'com.android.support'
+    }
+    implementation 'me.zhanghai.android.materialprogressbar:library:1.4.2'
+    implementation project(":widget.pulltorefresh")
+//    implementation project(':powerfulscrollview')
+    implementation 'com.github.lsjwzh:PowerfulScrollView-Core:1.2.0.59-androidx4'
 }
